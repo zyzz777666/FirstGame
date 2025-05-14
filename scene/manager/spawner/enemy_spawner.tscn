@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://0v0noh4wlipi"]
+
+[ext_resource type="Script" uid="uid://use6bnynu02j" path="res://scene/manager/spawner/enemy_spawner.gd" id="1_2qk8y"]
+[ext_resource type="PackedScene" uid="uid://gkjsjqkbm64f" path="res://scene/game_objects/bee/bee.tscn" id="2_8jh24"]
+[ext_resource type="PackedScene" uid="uid://8yjqiivy1d2p" path="res://scene/game_objects/eye/eye.tscn" id="2_naxck"]
+
+[node name="EnemySpawner" type="Node"]
+script = ExtResource("1_2qk8y")
+bee_scene = ExtResource("2_8jh24")
+eye_scene = ExtResource("2_naxck")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

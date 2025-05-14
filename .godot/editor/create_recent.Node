@@ -1,0 +1,15 @@
+AnimatedSprite2D
+ColorRect
+HSlider
+Label
+AudioStreamPlayer
+MarginContainer
+VBoxContainer
+PanelContainer
+CanvasLayer
+AudioStreamPlayer2D
+Button
+AnimationPlayer
+Node
+TextureProgressBar
+CollisionShape2D

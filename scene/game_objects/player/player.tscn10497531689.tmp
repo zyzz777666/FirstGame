@@ -1,0 +1,154 @@
+[gd_scene load_steps=24 format=3 uid="uid://b0ump57ta6uh8"]
+
+[ext_resource type="Script" uid="uid://bfcs36aditnu8" path="res://scene/game_objects/player/player.gd" id="1_8oolj"]
+[ext_resource type="PackedScene" uid="uid://d02yl8nx3spsb" path="res://scene/abilities/attack_ability/attack_controller.tscn" id="2_prcev"]
+[ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="3_5ccbm"]
+[ext_resource type="PackedScene" uid="uid://csg5kjfvoa8xu" path="res://scene/manager/health_manager.tscn" id="3_p0vsu"]
+[ext_resource type="PackedScene" uid="uid://cv2is2kstosln" path="res://scene/components/flash_component.tscn" id="4_0ygly"]
+[ext_resource type="Script" uid="uid://b2d3hnxxcp3uq" path="res://scene/game_objects/player/health_bar.gd" id="4_lfjyr"]
+[ext_resource type="Texture2D" uid="uid://j0kclo2qur3c" path="res://scene/game_objects/player/hit/Sprite-0003.png" id="4_tyng1"]
+[ext_resource type="PackedScene" uid="uid://dmo8p4itn6j48" path="res://scene/components/movement_component.tscn" id="4_wfn55"]
+[ext_resource type="Texture2D" uid="uid://yrdtm7gpvijw" path="res://scene/game_objects/player/hit/Sprite-0004.png" id="5_heqc5"]
+[ext_resource type="Shader" uid="uid://c5p5bvvc14wv0" path="res://scene/components/flash_component.gdshader" id="5_wfn55"]
+[ext_resource type="Texture2D" uid="uid://cenbev322qwip" path="res://scene/game_objects/player/idle/Sprite-0001.png" id="6_bjes5"]
+[ext_resource type="Texture2D" uid="uid://cijohu8d86hu" path="res://scene/game_objects/player/idle/Sprite-0002.png" id="7_fpv3a"]
+[ext_resource type="Texture2D" uid="uid://bbcgqm6piw76w" path="res://scene/game_objects/player/run/Sprite-0002.png" id="8_1tyhs"]
+[ext_resource type="Texture2D" uid="uid://bg8xiitk0l46n" path="res://scene/game_objects/player/run/Sprite-0003.png" id="9_0ygly"]
+[ext_resource type="Texture2D" uid="uid://d0856wl5v36bt" path="res://scene/game_objects/player/run/Sprite-0004.png" id="10_wfn55"]
+[ext_resource type="Texture2D" uid="uid://bbp14u41bf1sx" path="res://scene/ui/progress_bar_assets/health_bar/Under.png" id="11_fpv3a"]
+[ext_resource type="Texture2D" uid="uid://cfy46r6ifcgjl" path="res://scene/ui/progress_bar_assets/health_bar/Over.png" id="12_1tyhs"]
+[ext_resource type="Texture2D" uid="uid://w8rahltp6c6x" path="res://scene/ui/progress_bar_assets/health_bar/Progress.png" id="13_0ygly"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p0vsu"]
+resource_local_to_scene = true
+shader = ExtResource("5_wfn55")
+shader_parameter/percent = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kovgu"]
+radius = 36.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x72wf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_tyng1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_heqc5")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_bjes5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fpv3a")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_1tyhs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0ygly")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wfn55")
+}],
+"loop": true,
+"name": &"run",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0nrqd"]
+radius = 5.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_337ul"]
+radius = 5.0
+height = 16.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 0
+script = ExtResource("1_8oolj")
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_5ccbm")]
+max_health = 10.0
+
+[node name="HealthManager" parent="." instance=ExtResource("3_p0vsu")]
+current_health = 20.0
+
+[node name="HealthBar" type="CanvasLayer" parent="." node_paths=PackedStringArray("health_manager")]
+script = ExtResource("4_lfjyr")
+health_manager = NodePath("../HealthManager")
+
+[node name="MarginContainer" type="MarginContainer" parent="HealthBar"]
+offset_right = 90.0
+offset_bottom = 25.0
+size_flags_horizontal = 0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HealthBar/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+texture_under = ExtResource("11_fpv3a")
+texture_over = ExtResource("12_1tyhs")
+texture_progress = ExtResource("13_0ygly")
+texture_progress_offset = Vector2(23, 9)
+
+[node name="AbilityManager" type="Node" parent="."]
+
+[node name="AttackController" parent="AbilityManager" instance=ExtResource("2_prcev")]
+
+[node name="MovementComponent" parent="." instance=ExtResource("4_wfn55")]
+max_speed = 75
+acceleration = 25.0
+
+[node name="FlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_0ygly")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../AnimatedSprite2D")
+flash_material = SubResource("ShaderMaterial_p0vsu")
+
+[node name="GracePeriod" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="PickUpArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpArea"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_kovgu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_x72wf")
+animation = &"run"
+autoplay = "idle"
+frame = 1
+frame_progress = 0.852554
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_0nrqd")
+
+[node name="PlayerHurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtBox"]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_337ul")
+
+[connection signal="timeout" from="GracePeriod" to="." method="_on_grace_period_timeout"]
+[connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_entered"]
+[connection signal="area_exited" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_exited"]

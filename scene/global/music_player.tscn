@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh5w6ra3y6dxx"]
+
+[ext_resource type="AudioStream" uid="uid://cpe0tgdd68a8a" path="res://assets/audio/music/Тьма нападает.mp3" id="1_thxfx"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_thxfx")
+volume_db = -18.0
+pitch_scale = 0.72
+bus = &"Music"

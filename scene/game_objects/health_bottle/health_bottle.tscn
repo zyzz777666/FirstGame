@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://t7t2vo3o6vfs"]
+
+[ext_resource type="Script" uid="uid://d03m07iag4mnq" path="res://scene/game_objects/health_bottle/health_bottle.gd" id="1_kcpxk"]
+[ext_resource type="Texture2D" uid="uid://cf12tm8evewd7" path="res://scene/game_objects/health_bottle/Sprite-0003.png" id="1_n8t2w"]
+[ext_resource type="Texture2D" uid="uid://dqwjmyqp3fd47" path="res://scene/game_objects/health_bottle/Sprite-0004.png" id="2_kcpxk"]
+[ext_resource type="Texture2D" uid="uid://dgha10tsutugn" path="res://scene/game_objects/health_bottle/Sprite-0005.png" id="3_2q8y4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vvjb2"]
+radius = 6.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sedok"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_n8t2w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kcpxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2q8y4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="HealthBottle" type="Node2D"]
+script = ExtResource("1_kcpxk")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_vvjb2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.522, 0.522)
+sprite_frames = SubResource("SpriteFrames_sedok")
+autoplay = "default"
+frame_progress = 0.407071
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

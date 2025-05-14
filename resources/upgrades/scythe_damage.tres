@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://df2c3nmpifwkr"]
+
+[ext_resource type="Script" uid="uid://ch5ueiy8i6wqk" path="res://resources/upgrades/ability_upgrade.gd" id="1_04we8"]
+
+[resource]
+script = ExtResource("1_04we8")
+id = "scythe_damage"
+max_quantity = 1
+name = "Scythe Dmg"
+description = "Increases scythe attack damage by 15%"

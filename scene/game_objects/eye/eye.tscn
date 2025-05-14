@@ -1,0 +1,133 @@
+[gd_scene load_steps=25 format=3 uid="uid://8yjqiivy1d2p"]
+
+[ext_resource type="Script" uid="uid://bxm61lr2y4xlv" path="res://scene/game_objects/bee/bee.gd" id="1_h5tpx"]
+[ext_resource type="Texture2D" uid="uid://cnlsdveh02uok" path="res://scene/game_objects/eye/idle/Sprite-0001.png" id="2_g8i5c"]
+[ext_resource type="PackedScene" uid="uid://dy2v63a55kbo0" path="res://scene/components/death_component.tscn" id="2_xucvw"]
+[ext_resource type="Texture2D" uid="uid://cl571t3puykqe" path="res://scene/game_objects/eye/idle/Sprite-0002.png" id="3_rgvfh"]
+[ext_resource type="PackedScene" uid="uid://bknx8pl355mwx" path="res://scene/components/health_component.tscn" id="4_3hypg"]
+[ext_resource type="Texture2D" uid="uid://b6gvsx54nqvrn" path="res://scene/game_objects/eye/idle/Sprite-0003.png" id="4_svxn5"]
+[ext_resource type="PackedScene" uid="uid://c6p3602p5fvng" path="res://scene/components/exp_bottle_drop_component.tscn" id="5_3ckxv"]
+[ext_resource type="Texture2D" uid="uid://3gvnpls2pqmv" path="res://scene/game_objects/eye/idle/Sprite-0004.png" id="5_e8ixn"]
+[ext_resource type="PackedScene" uid="uid://dmo8p4itn6j48" path="res://scene/components/movement_component.tscn" id="6_bevaa"]
+[ext_resource type="Texture2D" uid="uid://yla7cjmkly60" path="res://scene/game_objects/eye/run/Sprite-0002.png" id="6_dop6p"]
+[ext_resource type="PackedScene" uid="uid://cv2is2kstosln" path="res://scene/components/flash_component.tscn" id="7_3hypg"]
+[ext_resource type="Texture2D" uid="uid://d0xc2re2osfit" path="res://scene/game_objects/eye/run/Sprite-0003.png" id="7_h5tpx"]
+[ext_resource type="PackedScene" uid="uid://bbjei16oy5wtp" path="res://scene/components/hurt_box_component.tscn" id="7_o1gto"]
+[ext_resource type="Shader" uid="uid://c5p5bvvc14wv0" path="res://scene/components/flash_component.gdshader" id="8_3ckxv"]
+[ext_resource type="Texture2D" uid="uid://jjg2hxx3m3my" path="res://scene/game_objects/eye/run/Sprite-0004.png" id="8_xucvw"]
+[ext_resource type="PackedScene" uid="uid://gx52uhsp3t2m" path="res://scene/components/health_bottle_drop_component.tscn" id="9_3ckxv"]
+[ext_resource type="Texture2D" uid="uid://d3fsh1lbbalmn" path="res://scene/game_objects/eye/run/Sprite-0005.png" id="9_3hypg"]
+[ext_resource type="Texture2D" uid="uid://gwftvr3e34c5" path="res://scene/game_objects/eye/run/Sprite-0006.png" id="10_3ckxv"]
+[ext_resource type="PackedScene" uid="uid://pxyxlfty6rxp" path="res://scene/components/hit_sound_component.tscn" id="10_bevaa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bevaa"]
+resource_local_to_scene = true
+shader = ExtResource("8_3ckxv")
+shader_parameter/percent = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rgvfh"]
+radius = 14.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_svxn5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_g8i5c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rgvfh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_svxn5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_e8ixn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_dop6p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_h5tpx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xucvw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3hypg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_3ckxv")
+}],
+"loop": true,
+"name": &"run",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e8ixn"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dop6p"]
+radius = 7.0
+
+[node name="Eye" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_h5tpx")
+death_scene = ExtResource("2_xucvw")
+sprite = ExtResource("6_dop6p")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_3hypg")]
+max_health = 15.0
+
+[node name="ExpBottleDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_3ckxv")]
+health_component = NodePath("../HealthComponent")
+
+[node name="MovementComponent" parent="." instance=ExtResource("6_bevaa")]
+max_speed = 100
+acceleration = 1.0
+
+[node name="FlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("7_3hypg")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../AnimatedSprite2D")
+flash_material = SubResource("ShaderMaterial_bevaa")
+
+[node name="HealthBottleDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("9_3ckxv")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HitSoundComponent" parent="." instance=ExtResource("10_bevaa")]
+volume_db = -15.0
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component", "hit_sound_component") instance=ExtResource("7_o1gto")]
+health_component = NodePath("../HealthComponent")
+hit_sound_component = NodePath("../HitSoundComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(0, -10)
+scale = Vector2(1.02068, 1.02068)
+shape = SubResource("CircleShape2D_rgvfh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12.54)
+scale = Vector2(0.959733, 0.919806)
+sprite_frames = SubResource("SpriteFrames_svxn5")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.761654
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_e8ixn")
+
+[node name="EnemyHitBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_dop6p")

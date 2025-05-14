@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://djm5r3ym5bwi1"]
+
+[ext_resource type="Script" uid="uid://ch5ueiy8i6wqk" path="res://resources/upgrades/ability_upgrade.gd" id="1_s74sm"]
+
+[resource]
+script = ExtResource("1_s74sm")
+id = "push_away"
+max_quantity = 1
+name = "Axe push"
+description = "Pushes enemies away from the axe
+"
+metadata/_custom_type_script = "uid://ch5ueiy8i6wqk"

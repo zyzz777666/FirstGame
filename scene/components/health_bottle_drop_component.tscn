@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://gx52uhsp3t2m"]
+
+[ext_resource type="Script" uid="uid://h6bqjjy86bcd" path="res://scene/components/health_bottle_drop_component.gd" id="1_cry2h"]
+[ext_resource type="PackedScene" uid="uid://t7t2vo3o6vfs" path="res://scene/game_objects/health_bottle/health_bottle.tscn" id="2_26u50"]
+
+[node name="HealthBottleDropComponent" type="Node"]
+script = ExtResource("1_cry2h")
+health_bottle_drop_percent = 99
+health_bottle_scene = ExtResource("2_26u50")
