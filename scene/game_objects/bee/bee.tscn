@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://gkjsjqkbm64f"]
+[gd_scene load_steps=22 format=3 uid="uid://gkjsjqkbm64f"]
 
 [ext_resource type="Script" uid="uid://bxm61lr2y4xlv" path="res://scene/game_objects/bee/bee.gd" id="1_2237y"]
 [ext_resource type="PackedScene" uid="uid://dy2v63a55kbo0" path="res://scene/components/death_component.tscn" id="2_d47e4"]
@@ -15,9 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://xfq3atsrjocr" path="res://scene/game_objects/bee/run/Sprite-0008.png" id="9_434ct"]
 [ext_resource type="PackedScene" uid="uid://gx52uhsp3t2m" path="res://scene/components/health_bottle_drop_component.tscn" id="9_bspp1"]
 [ext_resource type="PackedScene" uid="uid://pxyxlfty6rxp" path="res://scene/components/hit_sound_component.tscn" id="10_bspp1"]
-[ext_resource type="Texture2D" uid="uid://4adnvrfvav3h" path="res://scene/game_objects/bee/run/elite_run/Sprite-0006.png" id="16_uh2i7"]
-[ext_resource type="Texture2D" uid="uid://ch7bg3lalpeom" path="res://scene/game_objects/bee/run/elite_run/Sprite-0007.png" id="17_r05hf"]
-[ext_resource type="Texture2D" uid="uid://33fhoobkoffh" path="res://scene/game_objects/bee/run/elite_run/Sprite-0008.png" id="18_bgkhn"]
+[ext_resource type="PackedScene" uid="uid://dccubguof745m" path="res://scene/components/damage_component.tscn" id="10_ravj1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ravj1"]
 resource_local_to_scene = true
@@ -54,23 +52,6 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_kfgkm"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("16_uh2i7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_r05hf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_bgkhn")
-}],
-"loop": true,
-"name": &"run",
-"speed": 7.0
-}]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_u0udm"]
 radius = 4.0
 
@@ -101,6 +82,9 @@ flash_material = SubResource("ShaderMaterial_ravj1")
 [node name="HealthBottleDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("9_bspp1")]
 health_component = NodePath("../HealthComponent")
 
+[node name="DamageComponent" parent="." instance=ExtResource("10_ravj1")]
+damage_amount = 2.0
+
 [node name="HitSoundComponent" parent="." instance=ExtResource("10_bspp1")]
 volume_db = -15.0
 
@@ -117,10 +101,6 @@ position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_cb7xh")
 animation = &"run"
 autoplay = "idle"
-
-[node name="EliteSpriteBee" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_kfgkm")
-animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)

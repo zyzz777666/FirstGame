@@ -1,3 +1,5 @@
+DamageComponent
+Node
 AnimatedSprite2D
 ColorRect
 HSlider
@@ -10,6 +12,4 @@ CanvasLayer
 AudioStreamPlayer2D
 Button
 AnimationPlayer
-Node
 TextureProgressBar
-CollisionShape2D

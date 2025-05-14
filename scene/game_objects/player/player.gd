@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var ability_manager = $AbilityManager
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var movement_component: Node = $MovementComponent
+@onready var player_hurt_box = $PlayerHurtBox
 
 var base_speed = 0
 var enemies_colliding = 0
@@ -42,10 +43,18 @@ func movement_vector():
 	
 	
 func check_if_damaged():
-	if enemies_colliding == 0 || !grace_period.is_stopped():
+	if enemies_colliding == 0 or not grace_period.is_stopped():
 		return
-	health_component.take_damage(1)
-	grace_period.start()
+
+	for area in player_hurt_box.get_overlapping_areas():
+		var enemy_node = area.get_parent()
+		var damage_component = null
+		if enemy_node.has_node("DamageComponent"):
+			damage_component = enemy_node.get_node("DamageComponent")
+		if damage_component:
+			health_component.take_damage(damage_component.damage_amount)
+			grace_period.start()
+			return
 	
 	
 func health_update():

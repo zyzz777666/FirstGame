@@ -1,0 +1,14 @@
+res://resources/theme/main_theme.tres
+res://scene/components/flash_component.gdshader
+res://scene/components/flash_material.tres
+res://resources/world.tres
+res://scene/ui/vignette.gdshader
+res://scene/components/damage_component.tscn
+res://scene/components/damage_component.gd
+res://scene/game_objects/eye/eye.tscn
+res://scene/game_objects/bee/bee.tscn
+res://scene/level/level.tscn
+res://scene/game_objects/bee/bee.gd
+res://scene/game_objects/player/player.gd
+res://scene/game_objects/player/player.tscn
+res://scene/components/health_component.tscn
