@@ -54,5 +54,8 @@ position = Vector2(118, 100)
 [node name="FrontLayer" type="Node2D" parent="." groups=["front_layer"]]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(151, 43)
+scale = Vector2(-0.116094, -0.507164)
+offset = Vector2(-0.02, 0)
 position_smoothing_enabled = true
 script = ExtResource("11_eqtrg")
