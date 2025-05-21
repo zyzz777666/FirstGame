@@ -17,6 +17,7 @@ var upgrade_move_speed = preload("res://resources/upgrades/move_speed.tres")
 var upgrade_max_health = preload("res://resources/upgrades/max_health.tres")
 
 var upgrade_frost_sword = preload("res://resources/upgrades/frost_sword.tres")
+var upgrade_frost_sword_damage = preload("res://resources/upgrades/frost_sword_damage.tres")
 
 
 var current_upgrades = {}
@@ -60,6 +61,8 @@ func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
 	if chosen_upgrade.id == upgrade_throw_axe.id:
 		upgrade_pool.add_upgrade(upgrade_axe_damage, 10)
 		upgrade_pool.add_upgrade(upgrade_axe_push_away, 10)
+	if chosen_upgrade.id == upgrade_frost_sword.id:
+		upgrade_pool.add_upgrade(upgrade_frost_sword_damage, 10)
 	
 	
 func pick_upgrades():

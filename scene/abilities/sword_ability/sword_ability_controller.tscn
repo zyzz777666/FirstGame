@@ -6,6 +6,8 @@
 [node name="SwordAbilityController" type="Node"]
 script = ExtResource("1_6nrac")
 sword_ability_scene = ExtResource("2_b2xgr")
+slow_factor = 0.5
+damage_frost_sword = 15.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0

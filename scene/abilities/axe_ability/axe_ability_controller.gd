@@ -2,8 +2,8 @@ extends Node
 
 @export var axe_ability_scene: PackedScene
 
-var axe_damage = 10
-var damage_mulriplier = 1
+@export var axe_damage = 10.0
+var damage_mulriplier = 1.0
 var has_push_away_upgrade = false
 
 

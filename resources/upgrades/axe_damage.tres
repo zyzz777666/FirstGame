@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_bxluk")
 id = "axe_damage"
-max_quantity = 2
+max_quantity = 9
 name = "Axe Dmg"
 description = "Increases axe attack damage by 12%"

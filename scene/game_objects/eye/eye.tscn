@@ -83,14 +83,14 @@ death_scene = ExtResource("2_xucvw")
 sprite = ExtResource("6_dop6p")
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_3hypg")]
-max_health = 15.0
+max_health = 50.0
 
 [node name="ExpBottleDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_3ckxv")]
 health_component = NodePath("../HealthComponent")
 
 [node name="MovementComponent" parent="." instance=ExtResource("6_bevaa")]
 max_speed = 100
-acceleration = 1.0
+acceleration = 2.0
 
 [node name="FlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("7_3hypg")]
 health_component = NodePath("../HealthComponent")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://db5v64k0mb1g5"]
+
+[ext_resource type="Script" uid="uid://ch5ueiy8i6wqk" path="res://resources/upgrades/ability_upgrade.gd" id="1_0l4wg"]
+
+[resource]
+script = ExtResource("1_0l4wg")
+id = "frost_sword_damage"
+max_quantity = 4
+name = "Frost Sword Damage"
+description = "Increases frost sword attack damage by 10%"

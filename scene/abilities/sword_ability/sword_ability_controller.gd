@@ -2,8 +2,14 @@ extends Node
 
 @export var sword_ability_scene: PackedScene
 @export var spawn_distance: float = 40.0
+@export var slow_factor: float = 0.2
+@export var slow_duration: float = 2.0
+@export var damage_frost_sword = 10.0
+var damage_frost_sword_mulriplier = 1.0
 
-var damage = 10
+
+func _ready():
+	Global.ability_upgrade_added.connect(on_upgrade_added)
 
 	
 func _on_timer_timeout() -> void:
@@ -31,10 +37,10 @@ func _on_timer_timeout() -> void:
 	
 	
 	sword_ability_instance.global_position = player.global_position + offset
-	
 	sword_ability_instance.scale.x = direction
+	sword_ability_instance.hit_box_component.damage = damage_frost_sword * damage_frost_sword_mulriplier
 	
-	sword_ability_instance.hit_box_component.damage = damage
+	sword_ability_instance.set_slow_parameters(slow_factor, slow_duration)
 	
 	sword_ability_instance.attach_to_player(player, offset)
 
@@ -55,4 +61,7 @@ func find_closest_enemy(from_position: Vector2) -> Node2D:
 				closest_enemy = enemy
 	
 	return closest_enemy
-	
+
+func on_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
+	if upgrade.id == "frost_sword_damage":
+		damage_frost_sword_mulriplier = 1 + (current_upgrades["frost_sword_damage"]["quantity"] * .10)

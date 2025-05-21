@@ -9,4 +9,7 @@ new_ability_scene = ExtResource("1_0nbpu")
 id = "frost_sword"
 max_quantity = 1
 name = "Frost Sword"
-description = "Spawns the Frost  Sword"
+description = "Spawns the Frost  Sword
+Slows enemies by 50% for 2 seconds
+
+"
