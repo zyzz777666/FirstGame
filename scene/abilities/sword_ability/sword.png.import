@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bko35pyv28pcv"
-path="res://.godot/imported/Over.png-5f847a5fece0a486274c918ab98152e2.ctex"
+uid="uid://ebsemco36btn"
+path="res://.godot/imported/sword.png-491f6c83979936be1625844cab267861.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scene/ui/progress_bar_assets/exp_bar/Over.png"
-dest_files=["res://.godot/imported/Over.png-5f847a5fece0a486274c918ab98152e2.ctex"]
+source_file="res://scene/abilities/sword_ability/sword.png"
+dest_files=["res://.godot/imported/sword.png-491f6c83979936be1625844cab267861.ctex"]
 
 [params]
 

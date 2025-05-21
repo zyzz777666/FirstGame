@@ -16,6 +16,8 @@ var upgrade_axe_push_away = preload("res://resources/upgrades/axe_push_away.tres
 var upgrade_move_speed = preload("res://resources/upgrades/move_speed.tres")
 var upgrade_max_health = preload("res://resources/upgrades/max_health.tres")
 
+var upgrade_frost_sword = preload("res://resources/upgrades/frost_sword.tres")
+
 
 var current_upgrades = {}
 
@@ -25,6 +27,7 @@ func _ready():
 	upgrade_pool.add_upgrade(upgrade_scythe_damage, 10)
 	upgrade_pool.add_upgrade(upgrade_throw_axe, 10)
 	upgrade_pool.add_upgrade(upgrade_move_speed, 7)
+	upgrade_pool.add_upgrade(upgrade_frost_sword, 10)
 	
 	fallback_pool.add_upgrade(upgrade_max_health, 10)
 	

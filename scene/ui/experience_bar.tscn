@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cg6c3jqtxij40" path="res://scene/ui/experience_bar.gd" id="1_hl2uh"]
 [ext_resource type="Texture2D" uid="uid://bljiohvv6cak7" path="res://scene/ui/progress_bar_assets/exp_bar/Under.png" id="2_ssiqp"]
-[ext_resource type="Texture2D" uid="uid://bnkbs6qadeh3j" path="res://scene/ui/progress_bar_assets/exp_bar/Over.png" id="3_2tesu"]
+[ext_resource type="Texture2D" uid="uid://bko35pyv28pcv" path="res://scene/ui/progress_bar_assets/exp_bar/Over.png" id="3_2tesu"]
 [ext_resource type="Texture2D" uid="uid://b4ra5hjoi6vqj" path="res://scene/ui/progress_bar_assets/exp_bar/Progress.png" id="4_i2wta"]
 
 [node name="ExperienceBar" type="CanvasLayer"]

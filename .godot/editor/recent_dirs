@@ -1,5 +1,6 @@
-res://scene/components
 res://resources/upgrades
+res://scene/abilities/sword_ability
+res://scene/components
 res://scene/ui
 res://scene/global
 res://scene/manager

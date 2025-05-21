@@ -1,5 +1,10 @@
-DamageComponent
+AnimationPlayer
+CollisionShape2D
+Timer
 Node
+HitBoxComponent
+Sprite2D
+DamageComponent
 AnimatedSprite2D
 ColorRect
 HSlider
@@ -8,8 +13,3 @@ AudioStreamPlayer
 MarginContainer
 VBoxContainer
 PanelContainer
-CanvasLayer
-AudioStreamPlayer2D
-Button
-AnimationPlayer
-TextureProgressBar
