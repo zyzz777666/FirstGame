@@ -3,6 +3,7 @@ extends Node
 @export var axe_ability_scene: PackedScene
 
 @export var axe_damage = 10.0
+@export var additional_rotations = 0
 var damage_mulriplier = 1.0
 var has_push_away_upgrade = false
 
@@ -20,6 +21,7 @@ func _on_timer_timeout():
 	var front_layer = get_tree().get_first_node_in_group("front_layer") as Node2D
 	
 	var axe_ability_instance = axe_ability_scene.instantiate() as AxeAbility
+	axe_ability_instance.additional_rotation = additional_rotations
 	front_layer.add_child(axe_ability_instance)
 	
 	axe_ability_instance.global_position = player.global_position
@@ -36,3 +38,5 @@ func on_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
 		damage_mulriplier = 1 + (current_upgrades["axe_damage"]["quantity"] * .12)
 	if upgrade.id == "push_away":
 		has_push_away_upgrade = true
+	if upgrade.id == "axe_turn":
+		additional_rotations = current_upgrades["axe_turn"]["quantity"]

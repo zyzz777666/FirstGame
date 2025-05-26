@@ -1,10 +1,10 @@
 res://resources/upgrades
-res://scene/abilities/sword_ability
 res://scene/components
+C:/
+res://scene/abilities/sword_ability
 res://scene/ui
 res://scene/global
 res://scene/manager
-C:/
 res://scene/game_objects/health_bottle
 res://resources/theme
 res://scene/game_objects/eye

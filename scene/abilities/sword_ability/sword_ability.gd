@@ -6,7 +6,7 @@ class_name SwordAbility
 var attached_player = null
 var offset = Vector2.ZERO
 var initial_direction = 1
-var slow_factor = 0.3
+var slow_factor = 1.0
 var slow_duration = 1.0
 
 func attach_to_player(player, custom_offset = null):

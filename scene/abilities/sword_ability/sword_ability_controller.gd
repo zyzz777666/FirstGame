@@ -2,9 +2,10 @@ extends Node
 
 @export var sword_ability_scene: PackedScene
 @export var spawn_distance: float = 40.0
-@export var slow_factor: float = 0.2
+@export var slow_factor: float = 0.5
 @export var slow_duration: float = 2.0
 @export var damage_frost_sword = 10.0
+
 var damage_frost_sword_mulriplier = 1.0
 
 

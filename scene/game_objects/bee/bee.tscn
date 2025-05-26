@@ -66,7 +66,7 @@ death_scene = ExtResource("2_d47e4")
 sprite = ExtResource("5_8vbn4")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_qvfuh")]
-max_health = 25.0
+max_health = 10.0
 
 [node name="ExpBottleDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_d47e4")]
 health_component = NodePath("../HealthComponent")
